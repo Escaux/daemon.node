@@ -46,6 +46,14 @@ module.exports.daemon = function(script, args, opt) {
         detached: true
     };
 
+    if(opt.uid) {
+        cp_opt.uid = opt.uid;
+    }
+
+    if(opt.gid) {
+        cp_opt.gid = opt.gid;
+    }
+
     // spawn the child using the same node process as ours
     var child = child_process.spawn(process.execPath, [script].concat(args), cp_opt);
 
